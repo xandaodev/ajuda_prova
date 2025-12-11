@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    16:31:17 12/10/2025 
+-- Create Date:    10:10:27 12/11/2025 
 -- Design Name: 
--- Module Name:    q2 - Behavioral 
+-- Module Name:    sub2 - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,31 +29,30 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity q2 is
+entity sub2 is
 	port(
-		x0, y0 : in std_logic;
+		x0, x1 : in std_logic;
 		s : out std_logic
 	);
-end q2;
+end sub2;
 
-architecture Behavioral of q2 is
-	component q1 is
+architecture Behavioral of sub2 is
+	component sub1 is
 		port(
 			x, y : in std_logic;
 			a, b : out std_logic
 		);
 	end component;
-
-signal sa, sb : std_logic;
-
-begin
-	circuito1 : q1 port map(
-		x => x0,
-		y => y0,
-		a => sa, 
-		b => sb
-	);	
-	s <= sa and sb;
 	
+signal sa, sb : std_logic;
+begin
+sub_1 : sub1 port map(
+	x => x0,
+	y => x1,
+	a => sa,	--componente menor na esquerda
+	b => sb
+);
 
+s <= sa and sb;
 end Behavioral;
+
