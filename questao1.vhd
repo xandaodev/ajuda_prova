@@ -1,11 +1,10 @@
-Q1
 ----------------------------------------------------------------------------------
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    16:21:59 12/10/2025 
+-- Create Date:    10:04:30 12/11/2025 
 -- Design Name: 
--- Module Name:    q1 - Behavioral 
+-- Module Name:    sub1 - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -30,26 +29,24 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity q1 is
+entity sub1 is
 	port(
 		x, y : in std_logic;
 		a, b : out std_logic
 	);
-end q1;
+end sub1;
 
-architecture Behavioral of q1 is
+architecture Behavioral of sub1 is
 
-signal XandY : std_logic;
-signal notXorY : std_logic;
-signal X_notOr_and : std_logic;
-
+signal s_and, s_or1, s_or2 : std_logic;
 begin
 
-Xandy <= x and y;
-notXorY <= (not x) or y;
+s_and <= x and y;
+s_or1 <= (not x) or y;
+s_or2 <= s_and or (not s_or1) or x;
 
-b <= XandY;
-a <= XandY or notXorY or x;
-
+b <= s_and;
+a <= s_or2;
 
 end Behavioral;
+
